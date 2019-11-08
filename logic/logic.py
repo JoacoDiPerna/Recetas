@@ -26,7 +26,8 @@ def buscar_recetas(query):
         ingredientes = []
         for ingredient in result['recipe']['ingredientLines']:
             ingredientes.append(ingredient)
-        receta = Receta(uri, label, image, source, url, calories, ingredientes)
+        favorite = False
+        receta = Receta(uri, label, image, source, url, calories, ingredientes, favorite)
         # if existe_imagen(image):
         if pagina_con_imagen(url):
             recetas.append(receta)

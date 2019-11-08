@@ -7,6 +7,7 @@ from logic.logic import buscar_recetas
 def index():
     return template('index.tpl', recetas=[])
 
+
 @post('/')
 @post('/index')
 def index():
@@ -15,6 +16,11 @@ def index():
     recetas = buscar_recetas(query)
 
     return template('index.tpl', recetas=recetas)
+
+
+@route('/mis_recetas')
+def mis_recetas():
+    return template('mis_recetas.tpl', recetas=[])
 
 
 if __name__ == "__main__":

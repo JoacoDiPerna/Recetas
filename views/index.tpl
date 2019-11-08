@@ -87,6 +87,15 @@
                     <form action={{rec.url}}>
                       <button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
                     </form>
+                    % if rec.favorite == True:
+                    <form action={{rec.url}}>
+                      <img hspace="10" src="https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-part-2/512/dating_eating_vector_icon-512.png" width="30" height="30"/>
+                    </form>
+                    % else:
+                    <form action={{rec.url}}>
+                      <img hspace="10" src="https://cdn1.iconfinder.com/data/icons/circle-outlines/512/Like_Favourite_Love_Health_Heart_Favourites_Favorite-512.png" width="30" height="30"/>
+                    </form>
+                    % end
                   </div>
                   <small class="text-muted">Calorias receta: {{rec.calories}}</small>
                 </div>
