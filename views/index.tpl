@@ -34,7 +34,7 @@
 <body>
 
   <main role="main">
-  <form method="post" action="buscar_receta">
+  <form method="post" action="index">
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">Recetas</h1>
@@ -64,7 +64,9 @@
                 <p class="card-text">{{rec.label}}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                    <form action={{rec.url}}>
+                      <button type="submit" class="btn btn-sm btn-outline-secondary">Ver</button>
+                    </form>
                   </div>
                   <small class="text-muted">Calorias receta: {{rec.calories}}</small>
                 </div>
