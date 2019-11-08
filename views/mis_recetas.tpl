@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Recetas</title>
+  <title>Mis Recetas</title>
 
   <!-- Bootstrap core CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
@@ -42,32 +42,17 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="\index">Buscador <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="\index">Buscador</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="\mis_recetas">Mis Recetas</a>
+        <a class="nav-link" href="\mis_recetas">Mis Recetas <span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>
 </nav>
 
   <main role="main">
-  <form method="post" action="">
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">Recetas</h1>
-        <p class="lead text-muted">Encontrá aquí, solo con un click, todas tús recetas!</p>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" aria-label="Username" id='query' name="query">
-        </div>
-        <p>
-          <button type="submit" class="btn btn-primary my-2">Buscar</button>
-        </p>
-      </div>
-    </section>
-  </form>
-
-    <div class="album py-5 bg-light">
+     <div class="album py-5 bg-light">
       <div class="container">
         <div class="row">
           
