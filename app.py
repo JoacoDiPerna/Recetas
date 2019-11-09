@@ -39,7 +39,6 @@ def login():
 
 @app.post('/login')
 def login():
-    session.data['usuario'] = None
     user = request.forms.get('inputUser')
     password = request.forms.get('inputPassword')
     socios_logic = SociosLogic()
