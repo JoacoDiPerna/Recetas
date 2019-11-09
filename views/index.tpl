@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Recetas</title>
+  <title>Buscador</title>
 
   <!-- Bootstrap core CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
@@ -44,15 +44,26 @@
       <li class="nav-item active">
         <a class="nav-link" href="\index">Buscador <span class="sr-only">(current)</span></a>
       </li>
+    % if usuario != None: 
       <li class="nav-item">
         <a class="nav-link" href="\mis_recetas">Mis Recetas</a>
       </li>
-    </ul>
+    % end
+    </ul>       
+    % if usuario != None: 
+    <form class="form-inline my-2 my-lg-0" action="login">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Cerrar Sesión</button>
+    </form>
+    % else:
+    <form class="form-inline my-2 my-lg-0" action="login">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Ingresar</button>
+    </form>
+    % end
   </div>
 </nav>
 
   <main role="main">
-  <form method="post" action="">
+  <form method="post" action="\index">
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">Recetas</h1>

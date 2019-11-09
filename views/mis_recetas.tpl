@@ -41,13 +41,22 @@
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="\index">Buscador</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="\mis_recetas">Mis Recetas <span class="sr-only">(current)</span></a>
       </li>
     </ul>
+    % if usuario != None:
+    <form class="form-inline my-2 my-lg-0" action="login">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Cerrar Sesión</button>
+    </form>
+    % else:
+    <form class="form-inline my-2 my-lg-0" action="login">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Ingresar</button>
+    </form>
+    % end
   </div>
 </nav>
 

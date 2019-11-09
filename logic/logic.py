@@ -1,6 +1,6 @@
 import requests
 import json
-from entities.entities import Receta
+from entities.receta import Receta
 
 
 def buscar_recetas(query):
