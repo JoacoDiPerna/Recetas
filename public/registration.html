@@ -31,7 +31,7 @@
     <!-- <link href="/style/style.css" rel="stylesheet"> -->
 </head>
 
-<body>
+<body style="background-color:#e9ecef;">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <img class="navbar-brand"
@@ -51,43 +51,43 @@
         </div>
 
     </nav>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                <div class="card card-signin my-5">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Registrarse</h5>
-                        <form class="form-signin" method="post" action="registration">
-                            <div class="form-label-group">
-                                <input type="text" id="inputUser" name="inputUser" class="form-control"
-                                    placeholder="Usuario" required autofocus>
-                            </div>
-                            <br>
-                            <div class="form-label-group">
-                                <input type="text" id="inputPassword" name="inputPassword" class="form-control"
-                                    placeholder="Contraseña" required>
-                            </div>
-                            <br>
-                            <div class="form-label-group">
-                                <input type="email" id="inputEmail" name="inputEmail" class="form-control"
-                                    placeholder="Email" required>
-                            </div>
-                            <hr class="my-4">
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase"
-                                type="submit">Aceptar</button>
-                        </form>
-                        <form class="form-signin" action="login">
-                            <br>
-                            <button class="btn btn-lg btn-secondary btn-block text-uppercase"
-                                type="submit">Cancelar</button>
-                        </form>
+    <section class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class="card card-signin my-5">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Registrarse</h5>
+                            <form class="form-signin" method="post" action="registration">
+                                <div class="form-label-group">
+                                    <input type="text" id="inputUser" name="inputUser" class="form-control"
+                                        placeholder="Usuario" required autofocus>
+                                </div>
+                                <br>
+                                <div class="form-label-group">
+                                    <input type="text" id="inputPassword" name="inputPassword" class="form-control"
+                                        placeholder="Contraseña" required>
+                                </div>
+                                <br>
+                                <div class="form-label-group">
+                                    <input type="email" id="inputEmail" name="inputEmail" class="form-control"
+                                        placeholder="Email" required>
+                                </div>
+                                <hr class="my-4">
+                                <button class="btn btn-lg btn-primary btn-block text-uppercase"
+                                    type="submit">Aceptar</button>
+                            </form>
+                            <form class="form-signin" action="login">
+                                <br>
+                                <button class="btn btn-lg btn-secondary btn-block text-uppercase"
+                                    type="submit">Cancelar</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </section>
 </body>
 
 </html>

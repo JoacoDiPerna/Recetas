@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from entities.usuario import Base, Usuario
+from entities.usuario import Base, Usuario, RecetaFavorita
 from getpass import getuser
 
 
@@ -64,3 +64,9 @@ class UsuariosData(object):
         user_enc.recetas_favoritas = user.recetas_favoritas
         self.session.commit()
         return user_enc
+
+    def get_one_receta(self, id_usuario, uri, label):
+        try:
+            return self.session.query(RecetaFavorita).filter_by(id_usuario=id_usuario, url=uri, descripcion=label).first()
+        except:
+            return None

@@ -1,6 +1,6 @@
 import bottle
 from bottle import route, run, static_file, template, request, post, install
-from logic.logic import buscar_recetas
+from logic.recetas_logic import buscar_recetas
 from logic.usuarios_logic import SociosLogic
 from entities.usuario import Usuario
 import canister
@@ -20,9 +20,7 @@ def index():
 @app.post('/index')
 def index():
     query = request.forms.get('query')
-
-    recetas = buscar_recetas(query)
-
+    recetas = buscar_recetas(query, obtener_usuario_actual())
     return template('index.tpl', recetas=recetas, usuario=obtener_usuario_actual())
 
 

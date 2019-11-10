@@ -31,7 +31,7 @@
   <!-- <link href="/style/style.css" rel="stylesheet"> -->
 </head>
 
-<body>
+<body style="background-color:#e9ecef;">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <img class="navbar-brand" src="https://icons-for-free.com/iconfiles/png/512/flat+version+svg+cutlery-1319964487059654922.png" width="55" height="65"></img>
@@ -60,7 +60,9 @@
   </div>
 </nav>
 
-<div class="album py-5 bg-light">
+% if recetas != []:
+<section class="jumbotron">
+<div class="album py-5">
       <div class="container">
         <div class="row">
           
@@ -101,7 +103,8 @@
         </div>
       </div>
     </div>
-
+</section>
+% end
   </main>
 </body>
 
