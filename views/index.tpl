@@ -5,10 +5,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
- function agregar_favoritos(url, label) {
-   alert("jadsas");
-  document.getElementById(url.concat(label)).src = "https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-part-2/512/dating_eating_vector_icon-512.png";  
+ function agregar_favoritos(img, uri, label, user) {
+  document.getElementById(img.id).src = "https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-part-2/512/dating_eating_vector_icon-512.png";
+  document.getElementById(img.id).setAttribute("onclick", "quitar_favoritos(this);");
+
+  }
+  function quitar_favoritos(img, uri, label, user) {
+    document.getElementById(img.id).src = "https://cdn1.iconfinder.com/data/icons/circle-outlines/512/Like_Favourite_Love_Health_Heart_Favourites_Favorite-512.png";
+    document.getElementById(img.id).setAttribute("onclick","agregar_favoritos(this);");
   }
 </script>
 
@@ -110,11 +116,11 @@ background-color: #e9ecef;
                     % if usuario != None:
                       % if rec.favorite == True:
                       <form action={{rec.url}}>
-                        <img hspace="10" src="https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-part-2/512/dating_eating_vector_icon-512.png" width="30" height="30" id="{{rec.uri}}{{rec.label}}" onclick="quitar_favoritos({{rec.uri}},{{rec.label}})"/>
+                        <img hspace="10" src="https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-part-2/512/dating_eating_vector_icon-512.png" width="30" height="30" id="{{rec.uri}}{{rec.label}}" onclick="quitar_favoritos(this, {{rec.uri}}, {{rec.label}}, {{usuario}});"/>
                       </form>
                       % else:
                       <form action={{rec.url}}>
-                        <img hspace="10" src="https://cdn1.iconfinder.com/data/icons/circle-outlines/512/Like_Favourite_Love_Health_Heart_Favourites_Favorite-512.png" width="30" height="30" id="{{rec.uri}}{{rec.label}}" onclick="agregar_favoritos({{rec.uri}},{{rec.label}})"/>
+                        <img hspace="10" src="https://cdn1.iconfinder.com/data/icons/circle-outlines/512/Like_Favourite_Love_Health_Heart_Favourites_Favorite-512.png" width="30" height="30" id="{{rec.uri}}{{rec.label}}" onclick="agregar_favoritos(this, {{rec.uri}}, {{rec.label}}, {{usuario}});"/>
                       </form>
                       % end
                     % end

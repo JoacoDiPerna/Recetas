@@ -1,7 +1,8 @@
 import bottle
+import json
 from bottle import route, run, static_file, template, request, post, install
 from logic.recetas_logic import buscar_recetas
-from logic.usuarios_logic import SociosLogic
+from logic.usuarios_logic import UsuariosLogic
 from entities.usuario import Usuario
 import canister
 from canister import session
@@ -39,8 +40,8 @@ def login():
 def login():
     user = request.forms.get('inputUser')
     password = request.forms.get('inputPassword')
-    socios_logic = SociosLogic()
-    usuario = socios_logic.get_one_by_credentials(user, password)
+    usuarios_logic = UsuariosLogic()
+    usuario = usuarios_logic.get_one_by_credentials(user, password)
     if usuario != None:
         session.data['usuario'] = usuario
         return index()
@@ -62,12 +63,18 @@ def registration():
         email = request.forms.get('inputEmail')
         usuario = Usuario(usuario=user, contrasenia=password,
                           email=email, recetas_favoritas=[])
-        socios_logic = SociosLogic()
-        socios_logic.insert(usuario)
+        usuarios_logic = UsuariosLogic()
+        usuarios_logic.insert(usuario)
         session.data['usuario'] = usuario
         return index()
     except:
         return registration()
+
+@app.post('/grabar_receta_favorita')
+def grabar_receta_favorita():
+    print("sad")
+    data = request.json['myDict']
+    print (data)
 
 
 def obtener_usuario_actual():

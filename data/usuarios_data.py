@@ -33,7 +33,7 @@ class UsuariosData(object):
             return None
 
     def get_all(self):
-        return self.session.query(Usuario).all()        
+        return self.session.query(Usuario).all()
 
     def remove_all(self):
         try:
@@ -70,3 +70,17 @@ class UsuariosData(object):
             return self.session.query(RecetaFavorita).filter_by(id_usuario=id_usuario, url=uri, descripcion=label).first()
         except:
             return None
+
+    def insert_receta_favorita(self, receta_favorita):
+        self.session.add(receta_favorita)
+        self.session.commit()
+        return receta_favorita
+
+    def remove_receta_favorita(self, id_usuario, uri, label):
+        receta_favorita = self.get_one_receta(id_usuario, uri, label)
+        if receta_favorita is None:
+            return False
+        else:
+            self.session.delete(receta_favorita)
+            self.session.commit()
+            return True
