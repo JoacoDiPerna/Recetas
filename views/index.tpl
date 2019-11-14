@@ -6,15 +6,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
- function agregar_favoritos(img, uri, label, user) {
+% if usuario != None:
+var id_usuario = {{usuario.id_usuario}}
+% end
+ function agregar_favoritos(img) {
+  var uri = document.getElementById(img.id).getAttribute('data-uri');
+  var label = document.getElementById(img.id).getAttribute('data-label');
   document.getElementById(img.id).src = "https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-part-2/512/dating_eating_vector_icon-512.png";
   document.getElementById(img.id).setAttribute("onclick", "quitar_favoritos(this);");
-
+  $.ajax({
+    type: "POST", 
+    data: JSON.stringify({'id_usuario': id_usuario, "uri": uri, "label": label}),
+    url: "/grabar_receta_favorita" ,
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    });
   }
-  function quitar_favoritos(img, uri, label, user) {
+  function quitar_favoritos(img) {
+  var uri = document.getElementById(img.id).getAttribute('data-uri');
+  var label = document.getElementById(img.id).getAttribute('data-label');
     document.getElementById(img.id).src = "https://cdn1.iconfinder.com/data/icons/circle-outlines/512/Like_Favourite_Love_Health_Heart_Favourites_Favorite-512.png";
     document.getElementById(img.id).setAttribute("onclick","agregar_favoritos(this);");
+      $.ajax({
+    type: "POST", 
+    data: JSON.stringify({'id_usuario': id_usuario, "uri": uri, "label": label}),
+    url: "/borrar_receta_favorita" ,
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    });
   }
 </script>
 
@@ -116,11 +137,11 @@ background-color: #e9ecef;
                     % if usuario != None:
                       % if rec.favorite == True:
                       <form action={{rec.url}}>
-                        <img hspace="10" src="https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-part-2/512/dating_eating_vector_icon-512.png" width="30" height="30" id="{{rec.uri}}{{rec.label}}" onclick="quitar_favoritos(this, {{rec.uri}}, {{rec.label}}, {{usuario}});"/>
+                        <img hspace="10" src="https://cdn2.iconfinder.com/data/icons/color-svg-vector-icons-part-2/512/dating_eating_vector_icon-512.png" width="30" height="30" id="{{rec.uri}}{{rec.label}}" onclick="quitar_favoritos(this);" data-uri="{{rec.uri}}" data-label="{{rec.label}}"/>
                       </form>
                       % else:
                       <form action={{rec.url}}>
-                        <img hspace="10" src="https://cdn1.iconfinder.com/data/icons/circle-outlines/512/Like_Favourite_Love_Health_Heart_Favourites_Favorite-512.png" width="30" height="30" id="{{rec.uri}}{{rec.label}}" onclick="agregar_favoritos(this, {{rec.uri}}, {{rec.label}}, {{usuario}});"/>
+                        <img hspace="10" src="https://cdn1.iconfinder.com/data/icons/circle-outlines/512/Like_Favourite_Love_Health_Heart_Favourites_Favorite-512.png" width="30" height="30" id="{{rec.uri}}{{rec.label}}" onclick="agregar_favoritos(this);" data-uri="{{rec.uri}}" data-label="{{rec.label}}"/>
                       </form>
                       % end
                     % end

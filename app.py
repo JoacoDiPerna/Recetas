@@ -3,9 +3,10 @@ import json
 from bottle import route, run, static_file, template, request, post, install
 from logic.recetas_logic import buscar_recetas
 from logic.usuarios_logic import UsuariosLogic
-from entities.usuario import Usuario
+from entities.usuario import Usuario, RecetaFavorita
 import canister
 from canister import session
+from datetime import datetime
 
 app = bottle.Bottle()
 app.install(canister.Canister())
@@ -70,12 +71,29 @@ def registration():
     except:
         return registration()
 
+
 @app.post('/grabar_receta_favorita')
 def grabar_receta_favorita():
-    print("sad")
-    data = request.json['myDict']
-    print (data)
+    try:
+        data = request.json
+        id_usuario = data['id_usuario']
+        uri = data['uri']
+        label = data['label']
+        fecha = datetime.now()
+        receta_fav = RecetaFavorita(url=uri,
+                                    descripcion=label,
+                                    id_usuario=id_usuario,
+                                    usuario=obtener_usuario_actual(),
+                                    fecha_hora=fecha)
+        usuarios_logic = UsuariosLogic()
+        usuarios_logic.insert_receta_favorita(receta_fav)
+        return print('se registro el favorito')
+    except:
+        return print('error al registrar favorito')
 
+@app.post('/borrar_receta_favorita')
+def borrar_receta_favorita():
+    print("borrada")
 
 def obtener_usuario_actual():
     if 'usuario' in session.data:
