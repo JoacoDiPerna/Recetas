@@ -72,7 +72,7 @@ class UsuariosLogic(object):
         return True
 
     def remove_receta_favorita(self, id_usuario, uri, label):
-        receta_favorita = self.get_one_receta(id_usuario, uri, label)
+        receta_favorita = self.usuario.get_one_receta(id_usuario, uri, label)
         if receta_favorita is None:
             return False
         else:

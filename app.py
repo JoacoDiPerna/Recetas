@@ -74,26 +74,27 @@ def registration():
 
 @app.post('/grabar_receta_favorita')
 def grabar_receta_favorita():
-    try:
-        data = request.json
-        id_usuario = data['id_usuario']
-        uri = data['uri']
-        label = data['label']
-        fecha = datetime.now()
-        receta_fav = RecetaFavorita(url=uri,
-                                    descripcion=label,
-                                    id_usuario=id_usuario,
-                                    usuario=obtener_usuario_actual(),
-                                    fecha_hora=fecha)
-        usuarios_logic = UsuariosLogic()
-        usuarios_logic.insert_receta_favorita(receta_fav)
-        return print('se registro el favorito')
-    except:
-        return print('error al registrar favorito')
+    data = request.json
+    id_usuario = data['id_usuario']
+    uri = data['uri']
+    label = data['label']
+    fecha = datetime.now()
+    receta_fav = RecetaFavorita(url=uri,
+                                descripcion=label,
+                                id_usuario=id_usuario,
+                                usuario=obtener_usuario_actual(),
+                                fecha_hora=fecha)
+    usuarios_logic = UsuariosLogic()
+    usuarios_logic.insert_receta_favorita(receta_fav)
 
 @app.post('/borrar_receta_favorita')
 def borrar_receta_favorita():
-    print("borrada")
+    data = request.json
+    id_usuario = data['id_usuario']
+    uri = data['uri']
+    label = data['label']
+    usuarios_logic = UsuariosLogic()
+    usuarios_logic.remove_receta_favorita(id_usuario, uri, label)
 
 def obtener_usuario_actual():
     if 'usuario' in session.data:
