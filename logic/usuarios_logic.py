@@ -78,3 +78,9 @@ class UsuariosLogic(object):
         else:
             self.usuario.remove_receta_favorita(id_usuario, uri, label)
             return True
+
+    def recetas_favoritas_usuario(self, id_usuario):
+        favoritas = []
+        favoritas = self.usuario.get_favoritas_usuario(id_usuario)
+        return favoritas
+

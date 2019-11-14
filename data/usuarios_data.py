@@ -65,6 +65,12 @@ class UsuariosData(object):
         self.session.commit()
         return user_enc
 
+    def get_favoritas_usuario(self, id_usuario):
+        try:
+            return self.session.query(RecetaFavorita).filter_by(id_usuario=id_usuario).all()
+        except:
+            return None
+
     def get_one_receta(self, id_usuario, uri, label):
         try:
             return self.session.query(RecetaFavorita).filter_by(id_usuario=id_usuario, url=uri, descripcion=label).first()

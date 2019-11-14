@@ -28,7 +28,12 @@ def index():
 
 @app.route('/mis_recetas')
 def mis_recetas():
-    return template('mis_recetas.tpl', recetas=[], usuario=obtener_usuario_actual())
+    usuarios_logic = UsuariosLogic()
+    usuario = obtener_usuario_actual()
+    print(usuario)
+    favoritas = usuarios_logic.recetas_favoritas_usuario(usuario.id_usuario)
+    print(favoritas)
+    return template('mis_recetas.tpl', recetas=favoritas, usuario=usuario)
 
 
 @app.route('/login')
